@@ -1,11 +1,10 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"
-
-import { getDatabase, onValue, push, ref, remove } from "https://ground-6849f-default-rtdb.asia-southeast1.firebasedatabase.app"
+// Imports for firebase connectivity 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
+import { getDatabase, onValue, push, ref, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
 /* Firebase database link */
 const appSettings = {
-    databaseURL: "https://ground-b3206-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    databaseURL: 'https://realtime-database-8b01f-default-rtdb.europe-west1.firebasedatabase.app/'
 }
 
 const app = initializeApp(appSettings)
