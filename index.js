@@ -5,7 +5,7 @@ import { getDatabase, onValue, push, ref, remove } from "https://ground-6849f-de
 
 /* Firebase database link */
 const appSettings = {
-    databaseURL: "https://challenge-58263-default-rtdb.asia-southeast1.firebasedatabase.app"
+    databaseURL: "https://ground-b3206-default-rtdb.asia-southeast1.firebasedatabase.app/"
 }
 
 const app = initializeApp(appSettings)
