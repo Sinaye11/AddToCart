@@ -1,3 +1,9 @@
-A simple add to cart application desgined for a user to list all the items that they need to buy, then once they have picked up that item, they can remove that item off the list by simply clicking on it.
+Grocery Cart App
+
+This simple grocery cart app is built with JavaScript and connected to a Firebase database.
+
+Features
+Add items to the cart.
+Delete items from the cart by clicking on them.
 
 Netlify: https://super-llama-ed82ca.netlify.app
