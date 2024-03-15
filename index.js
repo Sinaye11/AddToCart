@@ -2,11 +2,11 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
 import { getDatabase, onValue, push, ref, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
-/* Firebase database link */
+//Firebase database link 
 const appSettings = {
     databaseURL: 'https://realtime-database-8b01f-default-rtdb.europe-west1.firebasedatabase.app/'
 }
-
+//Initializing and connecting to the firebase database
 const app = initializeApp(appSettings)
 const database = getDatabase(app)
 const shoppingListInDB = ref(database, "shoppingList")
@@ -14,39 +14,40 @@ const shoppingListInDB = ref(database, "shoppingList")
 const inputFieldEl = document.getElementById("input-field")
 const addButtonEl = document.getElementById("add-button")
 const shoppingListEl = document.getElementById("shopping-list")
-
-addButtonEl.addEventListener("click", function() {
+//Button 
+addButtonEl.addEventListener("click", function () {
     let inputValue = inputFieldEl.value
-
+    //Pushing information to the database
     push(shoppingListInDB, inputValue)
 
     clearInputField()
-    
+
 })
+//Connected to the database and updates accordingly 
+onValue(shoppingListInDB, function (snapshot) {//Gets us the snapshot that allows us to run the code below all over again
 
-onValue(shoppingListInDB, function(snapshot){
+    if (snapshot.exists()) {
 
-    if(snapshot.exists()) {
+        //Getting an array with ID and values
+        let itemsArray = Object.entries(snapshot.val())
 
-    //Getting an array with ID and values
-    let itemsArray = Object.entries(snapshot.val())
+        console.log(snapshot.val())
+        //Clears what's in the list
+        clearShoppingListEl()
 
-    console.log(snapshot.val())
+        //Loop to iterate on itemsArray and console log every item
+        for (let i = 0; i < itemsArray.length; i++) {
+            //Getting the current item
+            let currentItem = itemsArray[i]
 
-    clearShoppingListEl()
+            let currentItemID = currentItem[0]
+            let currentItemValue = currentItem[1]
 
-    //Loop to iterate on itemsArray and console log every item
-    for (let i =0; i < itemsArray.length;i++){
-        //Getting the current item
-        let currentItem = itemsArray[i]
-
-        let currentItemID = currentItem[0]
-        let currentItemValue = currentItem[1]
-
-        appendItemToShoppingListEl(itemsArray[i])
+            appendItemToShoppingListEl(itemsArray[i])
+        }
     }
-}
     else {
+        //Whilst list is empty it will print the below
         shoppingListEl.innerHTML = "No items here... yet"
     }
 
@@ -62,22 +63,20 @@ function clearInputField() {
 }
 //Adding new item to the list
 function appendItemToShoppingListEl(item) {
-    // shoppingListEl.innerHTML += `<li>${itemValue}</li>`
 
     let itemID = item[0]
     let itemValue = item[1]
-
     let newEl = document.createElement("li")
 
     newEl.textContent = itemValue
 
     //Attaching event listener to the newEl, in order to allow us to remove items from the list
-    newEl.addEventListener("click",function() {
-        
-       let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}` )
+    newEl.addEventListener("click", function () {
+        //Removing items from the database
+        let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
 
-       remove(exactLocationOfItemInDB)
-})
+        remove(exactLocationOfItemInDB)
+    })
 
     shoppingListEl.append(newEl)
 

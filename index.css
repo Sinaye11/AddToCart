@@ -1,11 +1,15 @@
-html, body {
+/*Body settings*/
+html,
+body {
     margin: 0;
     padding: 0;
-    font-family: 'Rubik',sans-serif;
+    font-family: 'Rubik', sans-serif;
     background-color: #EEF0F4;
     color: #432000;
-    user-select: none; /*Disabling the user to not be able to select the text*/
+    user-select: none;
+    /*Disabling the user to not be able to select the text*/
 }
+
 .container {
     display: flex;
     flex-direction: column;
@@ -13,12 +17,13 @@ html, body {
     margin: 30px auto;
 }
 
+/* Image settings */
 img {
-    /* width: 150px; */
     width: 100%;
     margin: 0 auto;
 }
 
+/*Input field*/
 input {
     color: #432000;
     background-color: #DCE1EB;
@@ -27,10 +32,11 @@ input {
     border-radius: 8px;
     font-size: 20px;
     text-align: center;
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
     margin: 10px 0;
 }
 
+/* Button settings */
 button {
     color: #FDFDFD;
     background-color: blue;
@@ -41,11 +47,13 @@ button {
     text-align: center;
     font-family: 'Rubik', sans-serif;
 }
+
 /*Button hover effect*/
 button:hover {
     background-color: black;
     cursor: pointer;
 }
+
 /*Settings for shopping list i*/
 ul {
     list-style-type: none;
@@ -53,8 +61,9 @@ ul {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    
+
 }
+
 /*Inserted items display*/
 ul li {
     font-size: 20px;
@@ -66,6 +75,7 @@ ul li {
     text-align: center;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
 }
+
 /*Hover effect when hovering over an item*/
 ul li:hover {
     background-color: red;
