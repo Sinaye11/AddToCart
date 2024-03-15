@@ -1,6 +1,6 @@
 Grocery Cart App <br>
 
-This simple grocery cart app is built with JavaScript and connected to a Firebase database.
+This is a simple grocery cart app that's built with JavaScript and connected to a Firebase database.
 
 Features: <be>
 
